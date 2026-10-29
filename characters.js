@@ -5,6 +5,7 @@
 // start : ルート最初のシーンID / end : エンドIDの接頭辞（○H=ハッピー ○N=ノーマル ○B=ビター）
 // th    : [ハッピー以上, ノーマル以上]（それ未満はビター） / max : 親密度の表示上限
 // memo  : そのルート固有の防災メモ（k のフラグが立つと「発見」になる）
+// full  : フルネーム。主人公は最初は姓で呼び（例：鳴海さん）、仲良くなると名前で呼ぶ
 // 灯の内部IDは machi1 のまま（art.js の見た目設定を流用するため）
 const CHARS={
 wataru:{region:'sea',sym:'k',name:'航',full:'鳴海 航',hair:'#1b1b22',coat:'#3d5a80',color:'#3d5a80',ready:true,start:'wa',end:'wend',th:[8,4],max:9,
@@ -12,7 +13,7 @@ wataru:{region:'sea',sym:'k',name:'航',full:'鳴海 航',hair:'#1b1b22',coat:'#
  memo:[
   {k:'kaibatsu',t:'電柱の「海抜」表示',b:'電柱や看板の「海抜○m」は、その場所が海面からどれくらい高いかを示す。ふだん歩く道の高さを知っておくと、逃げる方向を決める手がかりになる。'},
   {k:'learned',t:'津波避難場所のマーク',b:'緑の標識に、人が坂を駆け上がる絵。津波のときに逃げる場所の目印。強い揺れや、長くゆっくりした揺れを感じたら、警報を待たずにこうした高い場所へ。'}]},
-machi1:{region:'town',sym:'c',name:'灯',full:'灯（姓は未定）',hair:'#7a3b2b',coat:'#b0644b',color:'#b0644b',ready:true,start:'ak',end:'akend',th:[9,5],max:11,
+machi1:{region:'town',sym:'c',name:'灯',full:'町田 灯',hair:'#7a3b2b',coat:'#b0644b',color:'#b0644b',ready:true,start:'ak',end:'akend',th:[9,5],max:11,
  area:'住宅が密集する街',age:'大学3年（21）',traits:'明るくてテンポがいい。誰とでもすぐ打ち解ける。路地歩きとお菓子作りが好き。思い出の和菓子屋を探している',
  memo:[
   {k:'naisui',t:'川から遠くても、水は集まる',b:'短い時間に激しい雨が降ると、下水道の排水が追いつかず、側溝やマンホールから水があふれる（内水氾濫）。坂の下などの低い土地や、昔の川の跡は特に水が集まりやすい。'},

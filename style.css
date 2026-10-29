@@ -82,6 +82,7 @@ button:focus-visible,input:focus-visible{outline:3px solid #fff;outline-offset:2
 .c.art::before,.c.art::after{display:none}
 .c.art svg{width:100%;height:100%;display:block}
 /* 民宿版で足した背景 */
+.front{background:linear-gradient(#cfe6f2,#eaf4f8 28%,#4a3a30 28%,#4a3a30 34%,#efe2c8 34%,#efe2c8 48%,#8a5a3c 48%,#8a5a3c 50%,#efe2c8 50%,#efe2c8 70%,#6b4a34 70%,#6b4a34 73%,#c9bda5 73%)} /* 民宿の前（屋根・白壁・腰板・地面） */
 .station{background:linear-gradient(#cfe0ea,#eee4d0 56%,#8d8a86 56%,#7a7772 60%,#c9bda5 60%)}
 .inn{background:linear-gradient(#5a4436,#3b2c24)}
 .rain{background:linear-gradient(#5d6b78,#8a97a3 50%,#4f6170 50%,#3c4c5a)}
