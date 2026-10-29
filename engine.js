@@ -9,14 +9,14 @@ const BY={};Object.entries(CHARS).forEach(([id,c])=>{c.id=id;BY[c.sym]=c});
 let steps=[],i=0,sel=new Set(),curMap=null;
 const T=s=>s.replace(/\{n\}/g,st.name);
 const hide=()=>['#ti','#map','#en','#loc','#lr'].forEach(s=>{const e=$(s);if(e)e.hidden=true});
-const ICON={sign:p=>`<g class="sp" data-id="${p.id}"><rect x="${p.x-22}" y="${p.y-22}" width="44" height="44" rx="8" fill="#35A16B" stroke="#fff" stroke-width="2"/><path d="M${p.x-11} ${p.y+6}l11-17 11 17z" fill="#fff"/><path d="M${p.x-15} ${p.y+14}q4-4 7.5 0t7.5 0 7.5 0 7.5 0" stroke="#fff" stroke-width="2.5" fill="none"/></g>`};
+const ICON={sign:p=>`<g class="sp" data-id="${p.id}"><rect x="${p.x-22}" y="${p.y-22}" width="44" height="44" rx="8" fill="#1c9a69" stroke="#fff" stroke-width="2"/><path d="M${p.x-11} ${p.y+6}l11-17 11 17z" fill="#fff"/><path d="M${p.x-15} ${p.y+14}q4-4 7.5 0t7.5 0 7.5 0 7.5 0" stroke="#fff" stroke-width="2.5" fill="none"/></g>`};
 
 function hearts(){const c=CHARS[st.who];if(!c){$('#hr').textContent='';return}
  const m=c.max||8,n=Math.max(0,Math.min(st.aff[st.who]||0,m));$('#hr').textContent=c.name+'との親密度　'+'♥'.repeat(n)+'♡'.repeat(m-n)}
 function add(d,w,who=st.who){st.aff[who]=(st.aff[who]||0)+d;st.log.push([who,d,T(w||'')]);hearts()}
 const hh=(h,w)=>typeof h=='number'?add(h,w):Object.entries(h).forEach(([k,v])=>add(v,w,k));
 
-const nameColor=sp=>{if(sp=='{n}')return '#9A0079';const c=Object.values(CHARS).find(c=>c.name==sp);return c?c.color:'#7F878F'};
+const nameColor=sp=>{if(sp=='{n}')return '#c04a62';const c=Object.values(CHARS).find(c=>c.name==sp);return c?c.color:'#fff3'};
 const pickList=r=>Object.entries(CHARS).filter(([id,c])=>!r||r===1||c.region===r).map(([id,c])=>[c.full+(c.blurb?'　'+c.blurb:'')+(c.ready?'':'（準備中）'),c.ready?()=>startRoute(id):null]);
 function startRoute(id){st.who=id;hearts();play(S[CHARS[id].start])}
 // 立ち絵：img/ フォルダに「キャラID_表情.png」（例 img/wataru_smile.png）を置くと、その画像が使われる。
@@ -68,7 +68,7 @@ $('#vg').onclick=()=>{hide();play(curMap.done(sel,st))};
 function ending(t){const c=CHARS[st.who],n=st.aff[st.who]||0;$('#box').hidden=true;$('#sp').innerHTML='';$('#bg').className='dusk';
  const lg=st.log.filter(l=>l[0]==st.who).map(l=>(l[1]>0?'＋':'')+l[1]+'　'+l[2]).join('<br>')||'変化なし';
  const M=[...MEMO,...(c.memo||[])].map(m=>{const ok=!m.k||st.flags[m.k];return `<div class="card ${ok?'':'no'}"><h3>${m.t}${ok?'':'（未発見）'}</h3>${m.b}</div>`}).join('');
- $('#en').innerHTML=`<h2 style="margin:0 0 4px">${t}</h2><p style="margin:0 0 8px">${c.name}との親密度　<b style="color:var(--heart)">${n}</b></p><h3 style="margin:16px 0 0">親密度の記録</h3><div class="card">${lg}</div><h3 style="margin:16px 0 0">この街で身につけた防災メモ</h3>${M}<button class="btn" style="width:100%" onclick="$('#rs').click()">タイトルへ</button>`;
+ $('#en').innerHTML=`<h2 style="margin:0 0 4px">${t}</h2><p style="margin:0 0 8px">${c.name}との親密度　<b style="color:var(--pink)">${n}</b></p><h3 style="margin:16px 0 0">親密度の記録</h3><div class="card">${lg}</div><h3 style="margin:16px 0 0">この街で身につけた防災メモ</h3>${M}<button class="btn" style="width:100%" onclick="$('#rs').click()">タイトルへ</button>`;
  $('#en').hidden=false;$('#en').scrollTop=0}
 
 function begin(n){st.name=(n||'ハル').replace(/[<>&"']/g,'');st.who=null;st.aff={};st.log=[];st.flags={};hide();$('#hud').hidden=false;hearts()}

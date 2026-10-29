@@ -18,7 +18,7 @@ MAPS.wataru={title:'三日目',intro:'航さんの旅の最終日。夕焼けま
 hint:s=>s.flags.hint_hill?'自分で話した場所：坂の上の、神社の裏。緑のマークの柱がある、街と海が全部見える高台。'
  :s.flags.heard?'航さんは「上から見ると、自分がどこにいるかわかる」と言っていた。高いところが好きみたい。'
  :'航さんのやりたいこと：高いところから、海と街を一緒に撮りたい。',
-bg:'<rect width="360" height="400" fill="#66CCFF"/><path d="M0 0H250C270 80 240 160 275 220C300 270 275 330 300 400H0Z" fill="#EDC58F"/><g fill="none" stroke="#7F878F" stroke-width="2"><ellipse cx="175" cy="70" rx="95" ry="52"/><ellipse cx="175" cy="70" rx="62" ry="32"/><ellipse cx="175" cy="70" rx="30" ry="14"/></g><path d="M20 330H220M130 120V330M130 235H280" stroke="#fff" stroke-width="7" fill="none"/><text x="20" y="390" font-size="11" fill="#663300">等高線の内側ほど高い</text>',
+bg:'<rect width="360" height="400" fill="#4e9bbd"/><path d="M0 0H250C270 80 240 160 275 220C300 270 275 330 300 400H0Z" fill="#f1e7d3"/><g fill="none" stroke="#c9b98f" stroke-width="2"><ellipse cx="175" cy="70" rx="95" ry="52"/><ellipse cx="175" cy="70" rx="62" ry="32"/><ellipse cx="175" cy="70" rx="30" ry="14"/></g><path d="M20 330H220M130 120V330M130 235H280" stroke="#fff" stroke-width="7" fill="none"/><text x="20" y="390" font-size="11" fill="#7a6a4a">等高線の内側ほど高い</text>',
 spots:[
  {id:'shop',n:'商店街',x:130,y:235,g:'商',h:1,t:'コロッケ、もう一個いきます？ …この街の味、覚えて帰りたくて。'},
  {id:'sta',n:'駅前',x:70,y:320,g:'駅',h:0,t:'明日は、ここから帰るんですね。…なんだか、早いな。'},
