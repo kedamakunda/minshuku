@@ -32,10 +32,20 @@ html,body{height:100%;margin:0;background:var(--ink);color:var(--sand);font-fami
 .btn{text-align:center;background:var(--pink);color:#fff}.btn:disabled{opacity:.4}
 button:focus-visible,input:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .scr{position:absolute;inset:0;z-index:5;background:var(--ink);overflow:auto;padding:28px 20px;box-sizing:border-box}
-#ti{display:flex;flex-direction:column;justify-content:center;gap:16px;background:linear-gradient(#1b4a68,#10283c 70%)}
-#ti h1{font-size:34px;line-height:1.3;margin:0}
-#ti p{margin:0;opacity:.8;font-size:14px;line-height:1.7}
-#ti input,#loc input{font:inherit;font-size:18px;padding:12px 14px;border-radius:12px;border:2px solid var(--sea);background:#0d2132;color:var(--sand)}
+/* 開始画面：青空。上ほど濃い青、地平線に向かって白っぽくなる。ふわっとした雲を3つ重ねている
+   空が明るいので、開始画面だけ文字を紺（--ink）にしている */
+#ti{display:flex;flex-direction:column;justify-content:center;gap:16px;color:var(--ink);
+ background:
+  radial-gradient(ellipse 34% 6% at 22% 16%,#fffe 0 55%,#fff0 100%),
+  radial-gradient(ellipse 26% 5% at 30% 13%,#fffe 0 50%,#fff0 100%),
+  radial-gradient(ellipse 40% 7% at 78% 30%,#fffc 0 55%,#fff0 100%),
+  radial-gradient(ellipse 30% 5% at 88% 27%,#fffc 0 50%,#fff0 100%),
+  radial-gradient(ellipse 45% 6% at 15% 86%,#fffb 0 55%,#fff0 100%),
+  linear-gradient(#2f86d6,#6cbcec 45%,#bfe5f7 80%,#eef8fc)}
+#ti h1{font-size:34px;line-height:1.3;margin:0;text-shadow:0 2px 0 #fff8}
+#ti p{margin:0;opacity:.85;font-size:14px;line-height:1.7}
+#ti label{font-weight:700}
+#ti input,#loc input{font:inherit;font-size:18px;padding:12px 14px;border-radius:12px;border:2px solid var(--sea);background:#fff;color:var(--ink)}
 #map svg{width:100%;max-height:60vh;border-radius:16px;display:block;margin:10px 0}
 #map .sp{cursor:pointer}
 #map .sp circle{fill:#fff;stroke:#6b8896;stroke-width:2}
