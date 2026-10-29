@@ -98,3 +98,9 @@ button:focus-visible,input:focus-visible{outline:3px solid #fff;outline-offset:2
 #clk.tick{animation:clkPop .7s ease-out}
 @keyframes clkPop{40%{transform:scale(1.18)}}
 @media(prefers-reduced-motion:reduce){#clk.tick{animation:none}}
+.r-town.front  {background:url(img/town_front.webp)   center/cover no-repeat,#cfd8e0}  /* 小路屋の前 */
+.r-town.inn    {background:url(img/town_inn.webp)     center/cover no-repeat,#5a4436}  /* 小路屋の中 */
+.r-town.alley  {background:url(img/alley.webp)        center/cover no-repeat,#e6dccb}  /* 路地 */
+.r-town.shop   {background:url(img/shop.webp)         center/cover no-repeat,#d9c3a0}  /* 思い出の和菓子屋 */
+.r-town.dusk   {background:url(img/town_dusk.webp)    center/cover no-repeat,#e8788a}  /* 路地の夕方 */
+.r-town.station{background:url(img/town_station.webp) center/cover no-repeat,#cfe0ea}  /* 駅（見送り） */
