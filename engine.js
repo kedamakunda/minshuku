@@ -40,8 +40,13 @@ function setClock(t){const e=$('#clk');if(!e)return;if(!t){e.hidden=true;return}
  e.querySelector('.hh').style.transform='rotate('+min*0.5+'deg)';e.querySelector('.mm').style.transform='rotate('+min*6+'deg)';
  e.querySelector('span').textContent=h+':'+String(m).padStart(2,'0');
  e.hidden=false;e.classList.remove('tick');void e.offsetWidth;e.classList.add('tick')}
+// 背景の切り替え：前の背景を #bgp に写して上に重ね、ゆっくり透明にしていく（クロスフェード）
+// 速さは style.css の #bgp の transition で変える
+function changeBg(nc){const bg=$('#bg'),p=$('#bgp');if(bg.className===nc)return;
+ if(p){p.style.transition='none';p.className=bg.className;p.style.opacity=1;void p.offsetWidth;p.style.transition='';p.style.opacity=0}
+ bg.className=nc}
 function draw(){const s=steps[i];if(s.h)hh(s.h,s.why);if(s.set)Object.assign(st.flags,s.set);if(s.clock!==undefined)setClock(s.clock);
- $('#bg').className=s.bg+(st.region?' r-'+st.region:'');   // 背景：場面の名前＋街の名前（例：front r-sea）。街ごとの背景画像は style.css で切り替える
+ changeBg(s.bg+(st.region?' r-'+st.region:''));   // 背景：場面の名前＋街の名前（例：front r-sea）。街ごとの背景画像は style.css で切り替える
 $('#sp').className=s.c.length>1?'two':'';
  sprites(s);
  const n=$('#nm');n.textContent=T(s.sp);n.hidden=!s.sp;n.style.background=nameColor(s.sp);

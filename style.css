@@ -119,3 +119,10 @@ button:focus-visible,input:focus-visible{outline:3px solid #fff;outline-offset:2
 .r-town.shop   {background:url(img/shop.webp)         center/cover no-repeat,#d9c3a0}  /* 思い出の和菓子屋 */
 .r-town.dusk   {background:url(img/town_dusk.webp)    center/cover no-repeat,#e8788a}  /* 路地の夕方 */
 .r-town.station{background:url(img/town_station.webp) center/cover no-repeat,#cfe0ea}  /* 駅（見送り） */
+/* 画面が変わるときの演出
+   背景：前の背景（#bgp）が 0.9秒かけて消え、下の新しい背景が見えてくる
+   タイトル・地図・エンドの画面：出てくるときに 0.6秒かけてふわっと現れる */
+#bgp{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .9s ease}
+.scr:not([hidden]){animation:scrIn .6s ease}
+@keyframes scrIn{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.scr:not([hidden]){animation:none}}
