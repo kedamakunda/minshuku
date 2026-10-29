@@ -1,7 +1,7 @@
 // 最小限のDOMスタブで、ゲームをランダム/指定方針で最後まで遊ぶ
 const fs=require('fs'),vm=require('vm'),G=process.argv[2];
 function mkEl(id){let h='';return {id,hidden:false,get innerHTML(){return h},set innerHTML(v){h=v;this.children=[]},textContent:'',className:'',style:{},value:'',children:[],dataset:{},
- classList:{toggle(){}},appendChild(c){this.children.push(c)},insertAdjacentHTML(p,h){this.innerHTML+=h},toggleAttribute(){return true}}}
+ classList:{toggle(){},add(){},remove(){}},offsetWidth:0,querySelector(){return {style:{},textContent:''}},appendChild(c){this.children.push(c)},insertAdjacentHTML(p,h){this.innerHTML+=h},toggleAttribute(){return true}}}
 function run(policy,seed){
  let rnd=seed;const R=()=>{rnd=(rnd*16807)%2147483647;return rnd/2147483647};
  const els={};const get=s=>{const k=s.replace('#','');return els[k]||(els[k]=mkEl(k))};

@@ -89,3 +89,12 @@ button:focus-visible,input:focus-visible{outline:3px solid #fff;outline-offset:2
 .shop{background:linear-gradient(#e9d9bf,#d9c3a0 55%,#7a5a40 55%)}
 #ov{width:100%;margin-bottom:8px}
 .frag{display:inline-block;background:#fff2;border-radius:99px;padding:2px 10px;margin:2px 4px 2px 0;font-size:13px}
+/* 二日目の時計（engine.js の setClock）。針は時刻に合わせて回り、時間が進むと時計がぽんと弾む */
+#clk{display:inline-flex;align-items:center;gap:5px;background:rgba(0,0,0,.55);border-radius:99px;padding:2px 12px 2px 4px;font-weight:700;color:#fff;letter-spacing:1px;font-variant-numeric:tabular-nums}
+#clk svg{width:22px;height:22px;display:block}
+#clk circle{fill:#fff;stroke:var(--ink);stroke-width:1.5}
+#clk line{stroke:var(--ink);stroke-linecap:round;transform-box:view-box;transform-origin:12px 12px;transition:transform 1.4s ease-in-out}
+#clk .hh{stroke-width:2.4}#clk .mm{stroke-width:1.5}
+#clk.tick{animation:clkPop .7s ease-out}
+@keyframes clkPop{40%{transform:scale(1.18)}}
+@media(prefers-reduced-motion:reduce){#clk.tick{animation:none}}

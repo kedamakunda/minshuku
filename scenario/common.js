@@ -7,13 +7,16 @@
 // 方針：災害は起こさない。防災は、相手の趣味や思い出、街の中にあるものから自然に出てくる。
 // 山ルート（楓）は非表示。地図に山を足すときは MAPS.area.spots と S.mountain_intro を戻す。
 
-// ---- 二日目の「会話の回数」の仕組み ----
-// talkMenu({key, bg, c, sp, line, max, next, topics:[{id, label, scene, h}]}) をシーンの then に使う。
-//   選べる話題は max 回まで。一度選んだ話題は消える。回数を使い切ると next のシーンへ進む。
-//   話題のシーンの最後に {then: その talkMenu} を付けると、メニューに戻ってくる。
-function talkMenu(cfg){return s=>{const k=cfg.key,used=s.flags[k+'_n']||0;
- if(used>=cfg.max)return S[cfg.next];
- return [L(cfg.bg,cfg.c,cfg.sp,cfg.line+'（あと'+(cfg.max-used)+'回）',{ch:cfg.topics.filter(t=>!s.flags[k+'_'+t.id]).map(t=>[t.label,st=>{st.flags[k+'_'+t.id]=1;st.flags[k+'_n']=(st.flags[k+'_n']||0)+1;return S[t.scene]},t.h||0])})]}}
+// ---- 二日目の「時間」の仕組み ----
+// talkMenu({key, bg, c, sp, line, next, slots:[{time, t}], topics:[{id, label, scene, h}]}) をシーンの then に使う。
+//   slots の数だけ話題を選べる（1つ選ぶと時間が進む）。一度選んだ話題は消える。全部使うと next のシーンへ進む。
+//   slots の time は画面上の時計の時刻、t はその時刻になったときのナレーション。
+//   話題のシーンの最後に {then: その talkMenu} を付けると、次の時刻に進んでメニューに戻ってくる。
+function talkMenu(cfg){return s=>{const k=cfg.key,used=s.flags[k+'_n']||0,n=cfg.slots.length;
+ if(used>=n)return S[cfg.next];
+ const sl=cfg.slots[used];
+ return [L(sl.bg||cfg.bg,'','',sl.t,{clock:sl.time}),
+  L(cfg.bg,cfg.c,cfg.sp,cfg.line+'（今日はあと'+(n-used)+'回）',{ch:cfg.topics.filter(t=>!s.flags[k+'_'+t.id]).map(t=>[t.label,st=>{st.flags[k+'_'+t.id]=1;st.flags[k+'_n']=(st.flags[k+'_n']||0)+1;return S[t.scene]},t.h||0])})]}}
 
 S.intro=[
 L('town','','','春休み。この街に、旅の人がやってくる季節。'),

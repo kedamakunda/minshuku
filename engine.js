@@ -33,7 +33,14 @@ function go(t){const r=typeof t=='function'?t(st):t;if(typeof r=='string')play(S
 
 function sprites(s){$('#sp').innerHTML=[...s.c].map(k=>{const c=BY[k];if(!c)return '';const on=c.name==s.sp||(s.sp=='？？'&&s.c.length==1),f=on&&s.f||'normal',im=pic(c,f);
   return `<div class="c ${on||s.sp=='？？'?'on':''} ${im?'img':''} ${!im&&typeof artSVG=='function'?'art':''}" style="--hair:${c.hair};--coat:${c.coat};${im?`background-image:url(${im})`:''}">${!im&&typeof artSVG=='function'?artSVG(c.id,f):''}</div>`}).join('');}
-function draw(){const s=steps[i];if(s.h)hh(s.h,s.why);if(s.set)Object.assign(st.flags,s.set);
+// 時計（二日目の時間の流れ）：セリフに {clock:'12:00'} を付けると、画面上の時計がその時刻まで進む。{clock:''} で消える
+function setClock(t){const e=$('#clk');if(!e)return;if(!t){e.hidden=true;return}
+ const[h,m]=t.split(':').map(Number),min=h*60+m;
+ if(!e.dataset.ready){e.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><line class="hh" x1="12" y1="12" x2="12" y2="6.5"/><line class="mm" x1="12" y1="12" x2="12" y2="3.5"/></svg><span></span>';e.dataset.ready=1}
+ e.querySelector('.hh').style.transform='rotate('+min*0.5+'deg)';e.querySelector('.mm').style.transform='rotate('+min*6+'deg)';
+ e.querySelector('span').textContent=h+':'+String(m).padStart(2,'0');
+ e.hidden=false;e.classList.remove('tick');void e.offsetWidth;e.classList.add('tick')}
+function draw(){const s=steps[i];if(s.h)hh(s.h,s.why);if(s.set)Object.assign(st.flags,s.set);if(s.clock!==undefined)setClock(s.clock);
  $('#bg').className=s.bg;$('#sp').className=s.c.length>1?'two':'';
  sprites(s);
  const n=$('#nm');n.textContent=T(s.sp);n.hidden=!s.sp;n.style.background=nameColor(s.sp);
@@ -71,7 +78,7 @@ function ending(t){const c=CHARS[st.who],n=st.aff[st.who]||0;$('#box').hidden=tr
  $('#en').innerHTML=`<h2 style="margin:0 0 4px">${t}</h2><p style="margin:0 0 8px">${c.name}との親密度　<b style="color:var(--pink)">${n}</b></p><h3 style="margin:16px 0 0">親密度の記録</h3><div class="card">${lg}</div><h3 style="margin:16px 0 0">この街で身につけた防災メモ</h3>${M}<button class="btn" style="width:100%" onclick="$('#rs').click()">タイトルへ</button>`;
  $('#en').hidden=false;$('#en').scrollTop=0}
 
-function begin(n){st.name=(n||'ハル').replace(/[<>&"']/g,'');st.who=null;st.aff={};st.log=[];st.flags={};hide();$('#hud').hidden=false;hearts()}
+function begin(n){st.name=(n||'ハル').replace(/[<>&"']/g,'');st.who=null;st.aff={};st.log=[];st.flags={};setClock('');hide();$('#hud').hidden=false;hearts()}
 $('#go').onclick=()=>{begin($('#in').value.trim());play(S.intro)};
 $('#rs').onclick=()=>{$('#hud').hidden=true;$('#box').hidden=true;$('#ch').innerHTML='';$('#sp').innerHTML='';hide();$('#ti').hidden=false};
 // 開発用ジャンプ：…/index.html#ao のように「#キャラID」を付けて開くと、そのルートの最初から始まる（ローカルでは #ao/ao_d のようにシーンIDも指定できる）
