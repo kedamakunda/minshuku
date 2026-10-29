@@ -5,6 +5,7 @@
 
 - 公開ページ：https://claude.ai/artifact/JbakRoxjLm8YArAxcous6N （非公開。共有はページの Share メニューから）
 - バージョン：1.0-m（2026-10-29）
+- 配色：カラーユニバーサルデザイン（CUD）推奨配色セットの色だけを使う（style.css の先頭に一覧）
 
 ## ルート
 
