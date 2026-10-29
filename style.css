@@ -98,6 +98,17 @@ button:focus-visible,input:focus-visible{outline:3px solid #fff;outline-offset:2
 #clk.tick{animation:clkPop .7s ease-out}
 @keyframes clkPop{40%{transform:scale(1.18)}}
 @media(prefers-reduced-motion:reduce){#clk.tick{animation:none}}
+/* ---- 背景画像（街ごと）----
+   エンジンが #bg に「場面の名前」と「r-街の名前」を付ける（例：class="front r-sea"）。
+   .r-sea.front のように書くと、海の街の民宿の前だけ画像になる。画像がない場面は、上のグラデーションのまま。
+   画像は img/ に 9:16 の縦長で置く。cover で画面いっぱいに広げ、はみ出た分は切れる */
+.r-sea.front  {background:url(img/sea_front.webp)   center/cover no-repeat,#cfe6f2}  /* 汐見荘の前 */
+.r-sea.inn    {background:url(img/sea_inn.webp)     center/cover no-repeat,#5a4436}  /* 汐見荘の中 */
+.r-sea.town   {background:url(img/sea_town.webp)    center/cover no-repeat,#bfe0ee}  /* 港町の商店街 */
+.r-sea.sea    {background:url(img/sea.webp)         center/cover no-repeat,#9fd0e6}  /* 海沿いの道 */
+.r-sea.hill   {background:url(img/hill.webp)        75% center/cover no-repeat,#f6c98a}  /* 坂の上の高台（右の標識が切れないよう右寄せ） */
+.r-sea.dusk   {background:url(img/sea_dusk.webp)    center/cover no-repeat,#e8788a}  /* 夕焼け */
+.r-sea.station{background:url(img/sea_station.webp) center/cover no-repeat,#cfe0ea}  /* 駅（見送り） */
 .r-town.front  {background:url(img/town_front.webp)   center/cover no-repeat,#cfd8e0}  /* 小路屋の前 */
 .r-town.inn    {background:url(img/town_inn.webp)     center/cover no-repeat,#5a4436}  /* 小路屋の中 */
 .r-town.alley  {background:url(img/alley.webp)        center/cover no-repeat,#e6dccb}  /* 路地 */
