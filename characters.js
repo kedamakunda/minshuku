@@ -8,7 +8,7 @@
 // full  : フルネーム。主人公は最初は姓で呼び（例：鳴海さん）、仲良くなると名前で呼ぶ
 // 灯の内部IDは machi1 のまま（art.js の見た目設定を流用するため）
 const CHARS={
-wataru:{region:'sea',sym:'k',name:'航',full:'鳴海 航',hair:'#1b1b22',coat:'#3d5a80',color:'#3d5a80',ready:true,start:'wa',end:'wend',th:[9,5],max:10,
+wataru:{region:'sea',sym:'k',name:'航',full:'鳴海 航',hair:'#1b1b22',coat:'#3d5a80',color:'#3d5a80',ready:true,start:'wa',end:'wend',th:[9,5],max:10,img:'img/wataru.webp',
  area:'海',age:'大学4年（22）',traits:'穏やかで、人に合わせるのが上手。知らない街を地図を見て歩くのと、夕焼けの写真を撮るのが好き',
  memo:[
   {k:'kaibatsu',t:'電柱の「海抜」表示',b:'電柱や看板の「海抜○m」は、その場所が海面からどれくらい高いかを示す。ふだん歩く道の高さを知っておくと、逃げる方向を決める手がかりになる。'},
